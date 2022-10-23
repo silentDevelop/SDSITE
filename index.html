@@ -1,0 +1,97 @@
+<html>
+	<head>
+		 <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <title>SilentDeveloper</title>
+    <style type="text/css">
+    	#title{
+    		text-decoration: underline;
+    		font-size: 350%;
+    	}#copy{
+    		font-size: 80%;
+    		display: none;
+    	}#mainBase{
+    		padding: 2%;
+    		height: 100%;
+    		background-color: #fff;
+    	}body{
+    		background-color: #ddd;
+    	}#l4d{
+    		padding-left: 4%;
+    		font-size: 85%;
+    		font-style: italic;
+    	}#l4{
+    		padding-left: 4%;
+    	}#l2{
+    		padding-left: 2%;
+    	}h6{
+    		padding-left: 3%;
+    	}h5{
+    		padding-left: 2%;
+    	}h3{
+    		padding-left: 1%;
+    	}a{
+    		color: #666;
+    	}a:hover{
+    		color: #aaa;
+    	}
+    </style>
+
+	</head>
+	<body>
+		<div class="container" id="mainBase">
+			<h1 id="title">silentDeveloper</h1>
+			<hr>
+			<p>
+				<h3>Contact</h3>
+				<div id="l2">
+					Email <a id="mail" href="" onclick="copyMail()"></a><br>
+					Github <a href="https://github.com/silentDevelop">github.com/silentDevelop</a><br>
+				</div>
+			</p>
+			<hr>
+			<h3>Projects</h3>
+				<h5>Development</h5>
+				<p>
+					<h6>Web</h6>
+					<div id="l4">
+						<a href="gameOfLife/index.html">Game Of Life Simulator</a>
+						<div id="l4d">A simulation of John Conway's game of life. Written in pure javascript without any libraries.</div>
+					</div>
+					<h6>Java</h6>
+					<div id="l4">
+						<a href="https://play.google.com/store/apps/details?id=stp.showtouchposition">Device information (android app)</a>
+						<div id="l4d">Android app which tells the user information about their device and network.</div>
+					</div>
+					<!---<h6>Java</h6>
+					<div id="l4">
+						<a href="gameOfLife.html">Tic Tac Toe (AI)</a>
+						<div id="l4d">Configurable tic tac toe game written in JavaFX with a bot that can learn.</div>
+					</div>-->
+				</p>
+				<h5>Security</h5>
+				<p>
+					<h6>Reports</h6>
+					<div id="l4">
+						<a href="fracp2020.pdf">FRA Challange Easter 2020 Report</a>
+						<div id="l4d">A write up on a challange posted at <a href="https://challenge.fra.se/">challenge.fra.se</a> (Swedish National Defence Radio Establishment).</div>
+					</div>
+				</p>
+				<hr>
+				
+		</div>
+	</body>
+
+	<script type="text/javascript">
+    	const EMAIL = "silentDevelop@protonmail.com";
+    	document.getElementById("mail").innerHTML = EMAIL;
+    	function copyMail(){
+    		navigator.clipboard.writeText(EMAIL);
+    		alert("Copied to clipboard");
+    	}
+    </script>
+</html>
