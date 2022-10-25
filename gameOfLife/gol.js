@@ -173,53 +173,57 @@
     //one iteration of the simulation
     function run() {
         if(cellsAlive.length > 0) {
+            if(frames.length > 100){
+                array_pop(array_reverse(frames));
+            }
             frames[frames.length] = cellsAlive.toString();
             document.getElementById("goBack").disabled = false;
-        }
-        const cellsToKill = [];
-        const cellsToBirth = [];
-        const willLive = [];
+        
+            const cellsToKill = [];
+            const cellsToBirth = [];
+            const willLive = [];
 
-        for (let i = 0; i < cellsAlive.length; i++) {
-            var cellX = parseInt(cellsAlive[i].split(":")[0]);
-            var cellY = parseInt(cellsAlive[i].split(":")[1]);
-            const aliveNeighbours = getNeighbours(true, cellX, cellY);
+            for (let i = 0; i < cellsAlive.length; i++) {
+                var cellX = parseInt(cellsAlive[i].split(":")[0]);
+                var cellY = parseInt(cellsAlive[i].split(":")[1]);
+                const aliveNeighbours = getNeighbours(true, cellX, cellY);
 
-            if (aliveNeighbours.length == 2 || aliveNeighbours.length == 3) {
-                // Let Live
-                willLive[willLive.length] = cellsAlive[i];
-            } else {
-                // kill
-                cellsToKill[cellsToKill.length] = cellsAlive[i];
-            }
+                if (aliveNeighbours.length == 2 || aliveNeighbours.length == 3) {
+                    // Let Live
+                    willLive[willLive.length] = cellsAlive[i];
+                } else {
+                    // kill
+                    cellsToKill[cellsToKill.length] = cellsAlive[i];
+                }
 
-            const deadNeighbours = getNeighbours(false, cellX, cellY);
-            for (let i = 0; i < deadNeighbours.length; i++) {
+                const deadNeighbours = getNeighbours(false, cellX, cellY);
+                for (let i = 0; i < deadNeighbours.length; i++) {
 
-                const aliveNeighboursOfDeadNeighbour =
-                    getNeighbours(true, parseInt(deadNeighbours[i].split(":")[0]), parseInt(deadNeighbours[i].split(":")[1]));
-                if (aliveNeighboursOfDeadNeighbour.length == 3) {
-                    if (cellsToBirth.includes(deadNeighbours[i]) == false) {
-                        cellsToBirth[cellsToBirth.length] = deadNeighbours[i];
+                    const aliveNeighboursOfDeadNeighbour =
+                        getNeighbours(true, parseInt(deadNeighbours[i].split(":")[0]), parseInt(deadNeighbours[i].split(":")[1]));
+                    if (aliveNeighboursOfDeadNeighbour.length == 3) {
+                        if (cellsToBirth.includes(deadNeighbours[i]) == false) {
+                            cellsToBirth[cellsToBirth.length] = deadNeighbours[i];
+                        }
                     }
                 }
             }
-        }
 
-        for (let i = 0; i < willLive.length; i++) {
-            for (let q = 0; q < cellsToKill.length; q++) {
-                if (willLive[i] == cellsToKill[q]) {
-                    cellsToKill.splice(q, 1);
+            for (let i = 0; i < willLive.length; i++) {
+                for (let q = 0; q < cellsToKill.length; q++) {
+                    if (willLive[i] == cellsToKill[q]) {
+                        cellsToKill.splice(q, 1);
+                    }
                 }
             }
-        }
 
-        for (let i = 0; i < cellsToKill.length; i++) {
-            killCell(cellsToKill[i]);
-        }
+            for (let i = 0; i < cellsToKill.length; i++) {
+                killCell(cellsToKill[i]);
+            }
 
-        for (let i = 0; i < cellsToBirth.length; i++) {
-            birthCell(cellsToBirth[i]);
+            for (let i = 0; i < cellsToBirth.length; i++) {
+                birthCell(cellsToBirth[i]);
+            }
         }
     }
     

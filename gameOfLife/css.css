@@ -6,7 +6,7 @@
 }#mainBase{
   padding: 2%;
   background-color: #fff;
-  height: 100vh;
+  height: 100%;
 
 }#body{
   background-color: #ddd;
@@ -22,10 +22,6 @@
   height: 10px;
 
 }#banner{
-  margin: 1%;
-
-}#banner button{
-  margin-left: 50px;
 
 }#options {
   padding: 1%;
